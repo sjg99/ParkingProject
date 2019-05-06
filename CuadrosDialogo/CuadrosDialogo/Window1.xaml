@@ -1,0 +1,17 @@
+﻿<Window x:Class="CuadrosDialogo.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CuadrosDialogo"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock><Run Text="Hola gente, mi nombre es:"/><InlineUIContainer>
+                    <TextBox x:Name="textBox2" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                </InlineUIContainer></TextBlock>
+            <Button Name="btnEnterName" Click="btnEnterName_Click">Ingrese el nombre...</Button>
+        </StackPanel>
+    </Grid>
+</Window>
