@@ -1,0 +1,23 @@
+﻿<Window x:Class="Proyecto.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proyecto"
+        mc:Ignorable="d"
+        Title="Inicio de Sesion" Height="450" Width="450" WindowStartupLocation="CenterScreen">
+
+    <Border Background="#FF2562B9" Margin="20" BorderThickness="1" CornerRadius="20, 20, 20, 20">
+        <StackPanel>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Foreground="White" Margin="10, 10, 10, 0.5" Height="50" FontSize="24">
+                Inicio de Sesion
+            </Label>
+            <Separator Height="1" Margin="10, 1" Background="#FFC3C3C3"/>
+            <Label Foreground="#FFF8FFF0" Margin="10, 1" Height="50" FontSize="20" VerticalContentAlignment="Center">Usuario</Label>
+            <TextBox Padding="5, 1" VerticalContentAlignment="Center" Margin="30, 1" Foreground="#FF444444" x:Name="txtUsuario" Background="White" Height="40" FontSize="18"></TextBox>
+            <Label Foreground="#FFF8FFF0" Margin="10, 1" Height="50" FontSize="20" VerticalContentAlignment="Center">Contraseña</Label>
+            <PasswordBox Padding="5, 1" VerticalContentAlignment="Center" Margin="30, 1" Foreground="#FF444444" x:Name="txtContrasena" Background="White" Height="40" FontSize="18"></PasswordBox>
+            <Button Margin="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" Background="#FF13325F" Foreground="#FFDAFFF0" BorderBrush="{x:Null}" Click="Button_Click" Content="Entrar" Height="45" FontSize="20"/>
+        </StackPanel>
+    </Border>
+</Window>
