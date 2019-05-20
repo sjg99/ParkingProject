@@ -1,0 +1,17 @@
+﻿<Page x:Class="Proyecto.Ingreso"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto"
+      mc:Ignorable="d" 
+      d:DesignHeight="550"
+      Title="Ingreso" Width="950">
+        
+
+    <Grid Margin="0,0,0,0">
+        <Image x:Name="image" HorizontalAlignment="Left" Height="530" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="715"/>
+        <Button x:Name="button" Content="Take Pic" HorizontalAlignment="Left" Margin="766,398,0,0" VerticalAlignment="Top" Width="146" Click="button_Click" Height="47" />
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="766,108,0,0" VerticalAlignment="Top" Width="146" FontSize="24" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Page>
