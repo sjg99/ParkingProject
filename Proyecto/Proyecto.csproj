@@ -71,6 +71,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Salida.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Ingreso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +89,9 @@
     </Compile>
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Salida.xaml.cs">
+      <DependentUpon>Salida.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ingreso.xaml.cs">
       <DependentUpon>Ingreso.xaml</DependentUpon>

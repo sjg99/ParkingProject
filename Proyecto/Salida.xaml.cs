@@ -23,10 +23,10 @@ namespace Proyecto
     /// <summary>
     /// Lógica de interacción para Ingreso.xaml
     /// </summary>
-    public partial class Ingreso : Page
+    public partial class Salida : Page
     {
         SqlConnection sqlCon = new SqlConnection(@"Data Source=SJJGPC\SJGSERVER; Initial Catalog=ElectivaIV; Integrated Security=True;");
-        public Ingreso()
+        public Salida()
         {
             InitializeComponent();
         }
@@ -134,25 +134,60 @@ namespace Proyecto
             }
             return csalida;
         }
+        private DateTime ConsultarIngreso()
+        {
+            DateTime fingreso = DateTime.MinValue;
+            try
+            {
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+                string query = "SELECT top 1 * FROM tbingreso Where Placa=@Placa order by Fecha DESC";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Parameters.AddWithValue("@Placa", placa);
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        fingreso = reader.GetDateTime(reader.GetOrdinal("Fecha"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+            return fingreso;
+        }
         private void ButtonR_Click_1(object sender, RoutedEventArgs e)
         {
             if (placa != null)
-            {
-                DateTime Fecha = DateTime.Now;
-                if (CantidadIngresos() == CantidadSalidas())
+            {                
+                if (CantidadIngresos()-CantidadSalidas()==1)
                 {
+                    DateTime Fechas = DateTime.Now;
+                    DateTime Fechai = ConsultarIngreso();
+                    var diferencia = Fechas - Fechai;
+                    int minutos = (int)diferencia.TotalMinutes;
+                    int precio = minutos * 60;
                     try
                     {
                         if (sqlCon.State == ConnectionState.Closed)
                             sqlCon.Open();
-                        string query = "INSERT INTO tbingreso VALUES (@Placa,@Fecha)";
+                        string query = "INSERT INTO tbsalida VALUES (@Placa,@Fecha,@Precio)";
                         SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
                         sqlCmd.CommandType = CommandType.Text;
                         sqlCmd.Parameters.AddWithValue("@Placa", placa);
-                        sqlCmd.Parameters.AddWithValue("@Fecha", Fecha);
+                        sqlCmd.Parameters.AddWithValue("@Fecha", Fechas);
+                        sqlCmd.Parameters.AddWithValue("@Precio", precio.ToString());
                         if (sqlCmd.ExecuteNonQuery() == 1)
                         {
-                            MessageBox.Show("El vehiculo con placa " + placa + " ha ingresado a las " + Fecha);
+                            MessageBox.Show("El vehiculo con placa " + placa + " ha salido a las " + Fechas+ " y debe pagar $"+precio);
                         }
                     }
                     catch (Exception ex)
@@ -166,7 +201,7 @@ namespace Proyecto
                 }
                 else
                 {
-                    MessageBox.Show("No puede ingresar un vehiculo que no ha salido");
+                    MessageBox.Show("No puede salir un vehiculo que no ha ingresado");
                 }
             }
             else

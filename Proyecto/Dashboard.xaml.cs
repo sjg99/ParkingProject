@@ -57,7 +57,7 @@ namespace Proyecto
 
         private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            //frame.Content = new Salida();
+            frame.Content = new Salida();
         }
     }
 }
