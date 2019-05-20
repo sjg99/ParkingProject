@@ -71,26 +71,26 @@
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Gestion Usuarios" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                             <materialDesign:PackIcon Kind="Car" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Boton 1" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="Control de Ingreso" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown_1">
+                            <materialDesign:PackIcon Kind="Car" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Control de Salida" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Ticket" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Boton 2" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="LocalParking" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Boton 3" VerticalAlignment="Center" Margin="20 10"/>
+                            <materialDesign:PackIcon Kind="FileReport" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reportes" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

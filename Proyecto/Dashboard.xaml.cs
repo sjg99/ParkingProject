@@ -47,13 +47,17 @@ namespace Proyecto
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame.Content = new Ingreso();
-            Console.Write("Si");
+            frame.Content = new Ingreso();            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             textusr.Text = usr;
+        }
+
+        private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            //frame.Content = new Salida();
         }
     }
 }

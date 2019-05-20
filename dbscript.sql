@@ -11,5 +11,6 @@ Fecha datetime
 )
 CREATE TABLE tbsalida(
 Placa varchar(6),
-Fecha datetime
+Fecha datetime,
+Precio varchar(10)
 )
