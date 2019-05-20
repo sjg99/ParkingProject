@@ -25,7 +25,7 @@ namespace Proyecto
     /// </summary>
     public partial class Salida : Page
     {
-        SqlConnection sqlCon = new SqlConnection(@"Data Source=SJJGPC\SJGSERVER; Initial Catalog=ElectivaIV; Integrated Security=True;");
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=ElectivaIV; Integrated Security=True;");
         public Salida()
         {
             InitializeComponent();
