@@ -129,5 +129,97 @@ namespace Proyecto
                 sqlCon.Close();
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string clave = "";
+            try
+            {
+                
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+                string con = "SELECT Password FROM tbusuarios WHERE ID=@id";
+                SqlCommand sqlCmd = new SqlCommand(con, sqlCon);
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Parameters.AddWithValue("@ID", user_id);
+
+                SqlDataReader rd = sqlCmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    clave=rd["Password"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+
+            if (clavenueva1.Password != clavenueva2.Password)
+            {
+                clavedesigualn.Visibility = Visibility.Visible;
+                exito.Visibility = Visibility.Hidden;
+            }
+            if (clave != calveantigua.Password)
+            {
+                clavedesiguala.Visibility = Visibility.Visible;
+                exito.Visibility = Visibility.Hidden;
+            }
+
+            if (clavenueva1.Password == clavenueva2.Password && clave == calveantigua.Password)
+                {
+                    try
+                    {
+                        if (sqlCon.State == ConnectionState.Closed)
+                            sqlCon.Open();
+                        string conex = "UPDATE tbusuarios SET Password=@clave WHERE ID=@id";
+                        SqlCommand sqlCmdn = new SqlCommand(conex, sqlCon);
+                        sqlCmdn.CommandType = CommandType.Text;
+                        sqlCmdn.Parameters.AddWithValue("@ID", user_id);
+                        sqlCmdn.Parameters.AddWithValue("@clave", clavenueva1.Password);
+
+                        SqlDataReader red = sqlCmdn.ExecuteReader();
+
+                        clavedesiguala.Visibility = Visibility.Hidden;
+                        clavedesigualn.Visibility = Visibility.Hidden;
+
+                        exito.Visibility = Visibility.Visible;
+
+                        calveantigua.Password = "";
+                        clavenueva1.Password = "";
+                        clavenueva2.Password = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
+
+                }
+                
+               
+        }
+
+        private void Calveantigua_KeyDown(object sender, KeyEventArgs e)
+        {
+            clavedesiguala.Visibility = Visibility.Hidden;
+        }
+
+        private void Clavenueva1_KeyDown(object sender, KeyEventArgs e)
+        {
+            clavedesigualn.Visibility = Visibility.Hidden;
+        }
+
+        private void Clavenueva2_KeyDown(object sender, KeyEventArgs e)
+        {
+            clavedesigualn.Visibility = Visibility.Hidden;
+        }
     }
 }

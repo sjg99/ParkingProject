@@ -9,20 +9,31 @@
       Title="userdata">
 
     <Grid Loaded="Grid_Loaded">
-        <Label x:Name="name" Content="Nombre:" HorizontalAlignment="Left" Margin="94,29,0,0" VerticalAlignment="Top" FontSize="24" Width="212" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="nombreTxt" HorizontalAlignment="Left" Height="39" Margin="323,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
-        <Label x:Name="lastname" Content="Apellido:" HorizontalAlignment="Left" Margin="94,95,0,0" VerticalAlignment="Top" FontSize="24" Width="212" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="apellidoTxt" HorizontalAlignment="Left" Height="39" Margin="323,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
-        <Label x:Name="email" Content="Correo:" HorizontalAlignment="Left" Margin="94,161,0,0" VerticalAlignment="Top" FontSize="24" Width="212" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="emailTxt" HorizontalAlignment="Left" Height="39" Margin="323,164,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
-        <Label x:Name="addres" Content="Dirección:" HorizontalAlignment="Left" Margin="94,227,0,0" VerticalAlignment="Top" FontSize="24" Width="212" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="direccionTxt" HorizontalAlignment="Left" Height="39" Margin="323,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
-        <Label x:Name="phone" Content="Teléfono:" HorizontalAlignment="Left" Margin="94,298,0,0" VerticalAlignment="Top" FontSize="24" Width="212" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="telefonoTxt" HorizontalAlignment="Left" Height="39" Margin="323,301,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
-        <Label x:Name="birth" Content="Fecha Nacimiento:" HorizontalAlignment="Left" Margin="94,370,0,0" VerticalAlignment="Top" FontSize="24" Width="212" HorizontalContentAlignment="Right"/>
-        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="323,370,0,0" VerticalAlignment="Top" Width="299" Height="42" FontSize="24"/>
-        <Button x:Name="edit" Content="Editar" HorizontalAlignment="Left" Margin="760,380,0,0" VerticalAlignment="Top" Width="167" Click="Edit_Click"/>
-        <Button x:Name="save" Content="Guardar" HorizontalAlignment="Left" Margin="760,380,0,0" VerticalAlignment="Top" Width="167" Click="Save_Click"/>
+        <Label x:Name="name" Content="Nombre:" HorizontalAlignment="Left" Margin="2,6,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="nombreTxt" HorizontalAlignment="Left" Height="39" Margin="173,9,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
+        <Label x:Name="lastname" Content="Apellido:" HorizontalAlignment="Left" Margin="2,65,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="apellidoTxt" HorizontalAlignment="Left" Height="39" Margin="173,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
+        <Label x:Name="email" Content="Correo:" HorizontalAlignment="Left" Margin="2,123,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="emailTxt" HorizontalAlignment="Left" Height="39" Margin="173,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
+        <Label x:Name="addres" Content="Dirección:" HorizontalAlignment="Left" Margin="2,186,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="direccionTxt" HorizontalAlignment="Left" Height="39" Margin="173,189,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
+        <Label x:Name="phone" Content="Teléfono:" HorizontalAlignment="Left" Margin="2,248,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="telefonoTxt" HorizontalAlignment="Left" Height="39" Margin="173,251,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
+        <Label x:Name="birth" Content="Nacimiento:" HorizontalAlignment="Left" Margin="2,310,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="173,310,0,0" VerticalAlignment="Top" Width="299" Height="42" FontSize="24"/>
+        <Button x:Name="edit" Content="Editar" HorizontalAlignment="Left" Margin="173,398,0,0" VerticalAlignment="Top" Width="167" Click="Edit_Click"/>
+        <Button x:Name="save" Content="Guardar" HorizontalAlignment="Left" Margin="173,398,0,0" VerticalAlignment="Top" Width="167" Click="Save_Click"/>
+        <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="365" Margin="490,31,0,0" VerticalAlignment="Top" Width="5"/>
+        <Label x:Name="password" Content="Clave antigua:" HorizontalAlignment="Left" Margin="512,52,0,0" VerticalAlignment="Top" FontSize="24" Width="165" HorizontalContentAlignment="Right"/>
+        <PasswordBox x:Name="calveantigua" HorizontalAlignment="Left" Margin="682,52,0,0" VerticalAlignment="Top" Height="42" Width="251" FontSize="22" KeyDown="Calveantigua_KeyDown"/>
+        <Label x:Name="passwordnew" Content="Clave nueva:" HorizontalAlignment="Left" Margin="512,139,0,0" VerticalAlignment="Top" FontSize="24" Width="165" HorizontalContentAlignment="Right"/>
+        <PasswordBox x:Name="clavenueva1" HorizontalAlignment="Left" Margin="682,139,0,0" VerticalAlignment="Top" Height="42" Width="251" FontSize="22" KeyDown="Clavenueva1_KeyDown"/>
+        <Label x:Name="passwordnew1" Content="Clave nueva:" HorizontalAlignment="Left" Margin="512,207,0,0" VerticalAlignment="Top" FontSize="24" Width="165" HorizontalContentAlignment="Right"/>
+        <PasswordBox x:Name="clavenueva2" HorizontalAlignment="Left" Margin="682,207,0,0" VerticalAlignment="Top" Height="42" Width="251" FontSize="22" KeyDown="Clavenueva2_KeyDown"/>
+        <Button x:Name="button" Content="Actualizar Clave" HorizontalAlignment="Left" Margin="612,331,0,0" VerticalAlignment="Top" Width="242" Click="Button_Click"/>
+        <Label x:Name="clavedesigualn" Content="Las contraseñas no coinciden." HorizontalAlignment="Left" Margin="677,248,0,0" VerticalAlignment="Top" Width="256" Height="25" Foreground="Red" HorizontalContentAlignment="Left" Visibility="Hidden"/>
+        <Label x:Name="clavedesiguala" Content="Clave incorrecta." HorizontalAlignment="Center" Margin="682,94,0,0" VerticalAlignment="Top" Width="251" Height="25" Foreground="Red" HorizontalContentAlignment="Left" Visibility="Hidden"/>
+        <Label x:Name="exito" Content="Clave actualizada exitosamente." HorizontalAlignment="Center" Margin="612,363,106,0" VerticalAlignment="Top" Width="242" Height="25" Foreground="Green" HorizontalContentAlignment="Center" Visibility="Hidden"/>
 
     </Grid>
 </Page>
