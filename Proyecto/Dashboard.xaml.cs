@@ -20,6 +20,8 @@ namespace Proyecto
     public partial class Dashboard : Window
     {
         public string usr;
+        public string id;
+        public bool update=false;
         public Dashboard()
         {
             InitializeComponent();
@@ -53,11 +55,25 @@ namespace Proyecto
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             textusr.Text = usr;
+            if (update)
+            {
+                update = false;
+                Account_Click(sender,e);
+            }
         }
 
         private void StackPanel_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             frame.Content = new Salida();
         }
+
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            userdata data = new userdata();
+            data.user_id = id;
+            frame.Content = data;
+        }
+
+
     }
 }

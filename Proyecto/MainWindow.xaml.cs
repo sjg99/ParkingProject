@@ -24,6 +24,7 @@ namespace Proyecto
     {
 
         SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=ElectivaIV; Integrated Security=True;");
+        
 
         public MainWindow()
         {
@@ -32,11 +33,13 @@ namespace Proyecto
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            userdata us = new userdata();
+            us.user_id = txtUsuario.Text;
             try
             {
                 if (sqlCon.State == ConnectionState.Closed)
                     sqlCon.Open();
-                string consulta = "SELECT COUNT(1) FROM tbusuarios WHERE Login=@Username AND Password=@Password";
+                string consulta = "SELECT COUNT(1) FROM tbusuarios WHERE ID=@Username AND Password=@Password";
                 SqlCommand sqlCmd = new SqlCommand(consulta, sqlCon);
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@Username", txtUsuario.Text);
@@ -44,8 +47,19 @@ namespace Proyecto
                 int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 if (count == 1)
                 {
+                    string con = "SELECT * FROM tbusuarios WHERE ID=@Username";
+                    SqlCommand sqlCmd1 = new SqlCommand(con, sqlCon);
+                    sqlCmd1.CommandType = CommandType.Text;
+                    sqlCmd1.Parameters.AddWithValue("@Username", txtUsuario.Text);
+                    
+                    SqlDataReader rd = sqlCmd1.ExecuteReader();
+                    
                     Dashboard menu = new Dashboard();
-                    menu.usr = txtUsuario.Text;
+                    menu.id = txtUsuario.Text;
+                    while (rd.Read())
+                    {
+                        menu.usr = rd["Nombre"].ToString()+" "+rd["Apellido"].ToString();
+                    }
                     menu.Show();
                     Close();
                 }

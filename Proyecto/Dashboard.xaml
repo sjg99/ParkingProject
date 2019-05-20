@@ -49,7 +49,7 @@
                 <TextBlock x:Name="textusr" Text="Usuario" VerticalAlignment="Center" FontSize="16"/>
                 <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                     <StackPanel Width="150">
-                        <Button Content="Cuenta"/>
+                        <Button Content="Cuenta" Click="Account_Click"/>
                         <Button Content="Opciones"/>
                         <Button Content="Ayuda"/>
                         <Separator/>
