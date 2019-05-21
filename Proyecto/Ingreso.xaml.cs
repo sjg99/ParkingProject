@@ -17,6 +17,11 @@ using System.Net.Http;
 using System.IO;
 using System.Data.SqlClient;
 using System.Data;
+using AForge.Video;
+using AForge.Video.DirectShow;
+using System.Drawing;
+using System.Threading;
+using System.Drawing.Imaging;
 
 namespace Proyecto
 {
@@ -25,12 +30,49 @@ namespace Proyecto
     /// </summary>
     public partial class Ingreso : Page
     {
+        public bool existenDispositivos = false;
+        public bool fotoHecha = false;
+        private FilterInfoCollection dispositivosVideo;
+        private VideoCaptureDevice fuenteVideo = null;
         SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=ElectivaIVFinal; Integrated Security=True;");
         public Ingreso()
         {
             InitializeComponent();
+            BuscarDispositivos();
         }
+        private void BuscarDispositivos()
+        {
+            dispositivosVideo = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (dispositivosVideo.Count == 0)
+            {
+                existenDispositivos = false;
+            }
+            else
+            {
+                existenDispositivos = true;
+            }
+        }
+        private void MostrarImagen(object sender, NewFrameEventArgs eventArgs)
+        {
+           
 
+            System.Drawing.Image img = (Bitmap)eventArgs.Frame.Clone();
+
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, ImageFormat.Bmp);
+            ms.Seek(0, SeekOrigin.Begin);
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = ms;
+            bi.EndInit();
+
+            bi.Freeze();
+            
+            Dispatcher.BeginInvoke(new ThreadStart(delegate
+            {
+                image.Source = bi;
+            }));
+        }
         string placa = null;
         private static readonly HttpClient client = new HttpClient();
 
@@ -55,7 +97,7 @@ namespace Proyecto
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            /*OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Jpeg files (*.jpeg)|*.jpeg|Jpg files (*.jpg)|*.jpg|Png files (*.png)|*.png|All files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == true)
@@ -71,7 +113,18 @@ namespace Proyecto
                 task_result = task_result.Substring(12, 6);
                 placa = task_result;
                 label.Content = placa;
-            }
+            }*/
+            image1.Source = image.Source;
+
+            string x = image1.Source.ToString();
+            Task<string> recognizeTask = Task.Run(() => ProcessImage(x));
+            recognizeTask.Wait();
+            string task_result = recognizeTask.Result;
+
+            task_result = task_result.Substring(task_result.IndexOf('['));
+            task_result = task_result.Substring(12, 6);
+            placa = task_result;
+            label.Content = placa;
         }
        
         private int CantidadIngresos()
@@ -172,6 +225,21 @@ namespace Proyecto
             else
             {
                 MessageBox.Show("No ha ingresado una imagen");
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (existenDispositivos)
+            {
+                fuenteVideo = new VideoCaptureDevice(dispositivosVideo[0].MonikerString);
+                fuenteVideo.NewFrame += new NewFrameEventHandler(MostrarImagen);
+                fuenteVideo.Start();
+            }
+            else
+            {
+                MessageBox.Show("No hay dispositivo de video", "Informacion");
+                
             }
         }
     }
