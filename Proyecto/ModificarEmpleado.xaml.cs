@@ -44,8 +44,8 @@ namespace Proyecto
                 {
                     consulta.Connection = con.AbrirConexion();
                     consulta.CommandText = "UPDATE tbusuarios " +
-                                           "SET Nombre=@nombre, Apellido=@apellido, Telefono=@telefono, Direccion=@direccion, Email=@email, Login=@login, Password=@password " +
-                                           "WHERE Id=@id";
+                                           "SET Nombre=@nombre, Apellido=@apellido, Telefono=@telefono, Direccion=@direccion, Email=@email, Password=@password " +
+                                           "WHERE Login=@login";
                     consulta.CommandType = CommandType.Text;
                     consulta.Parameters.AddWithValue("@nombre", campoNombre.Text);
                     consulta.Parameters.AddWithValue("@apellido", campoApellido.Text);
@@ -54,7 +54,7 @@ namespace Proyecto
                     consulta.Parameters.AddWithValue("@email", campoEmail.Text);
                     consulta.Parameters.AddWithValue("@login", campoLogin.Text);
                     consulta.Parameters.AddWithValue("@password", campoPassword.Text);
-                    consulta.Parameters.AddWithValue("@id", registro["Id"].ToString());
+                    
                     da = new SqlDataAdapter(consulta);
                     tabla = new DataTable();
                     da.Fill(tabla);                   
