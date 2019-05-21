@@ -74,6 +74,9 @@ namespace Proyecto
             frame.Content = data;
         }
 
-
+        private void StackPanel_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        {
+            frame.Content = new Empleados();
+        }
     }
 }

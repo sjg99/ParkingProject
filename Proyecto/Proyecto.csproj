@@ -67,10 +67,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Conexion.cs" />
+    <Compile Include="CrearEmpleado.xaml.cs">
+      <DependentUpon>CrearEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados.xaml.cs">
+      <DependentUpon>Empleados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEmpleado.xaml.cs">
+      <DependentUpon>ModificarEmpleado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="userdata.xaml.cs">
       <DependentUpon>userdata.xaml</DependentUpon>
     </Compile>
+    <Page Include="CrearEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Empleados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModificarEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

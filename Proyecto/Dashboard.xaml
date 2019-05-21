@@ -33,7 +33,7 @@
     </Window.Triggers>
 
     <Grid Background="LightGray">
-        <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="446" Margin="87,96,0,0" VerticalAlignment="Top" Width="968" RenderTransformOrigin="0.5,0.5" NavigationUIVisibility="Hidden">
+        <Frame x:Name="frame" Content="" HorizontalAlignment="Left" Height="530" Margin="92,69,0,0" VerticalAlignment="Top" Width="968" RenderTransformOrigin="0.5,0.5" NavigationUIVisibility="Hidden">
             <Frame.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -70,7 +70,7 @@
                 </Grid>
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
                     <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown_2">
                             <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Text="Gestion Usuarios" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>

@@ -23,7 +23,7 @@ namespace Proyecto
     public partial class MainWindow : Window
     {
 
-        SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=ElectivaIV; Integrated Security=True;");
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost; Initial Catalog=ElectivaIVFinal; Integrated Security=True;");
         
 
         public MainWindow()
@@ -39,21 +39,15 @@ namespace Proyecto
             {
                 if (sqlCon.State == ConnectionState.Closed)
                     sqlCon.Open();
-                string consulta = "SELECT COUNT(1) FROM tbusuarios WHERE ID=@Username AND Password=@Password";
+                string consulta = "SELECT * FROM tbusuarios WHERE Login=@Username AND Password=@Password";
                 SqlCommand sqlCmd = new SqlCommand(consulta, sqlCon);
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@Username", txtUsuario.Text);
                 sqlCmd.Parameters.AddWithValue("@Password", txtContrasena.Password);
-                int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
-                if (count == 1)
+                SqlDataReader rd = sqlCmd.ExecuteReader();
+                if (rd != null)
                 {
-                    string con = "SELECT * FROM tbusuarios WHERE ID=@Username";
-                    SqlCommand sqlCmd1 = new SqlCommand(con, sqlCon);
-                    sqlCmd1.CommandType = CommandType.Text;
-                    sqlCmd1.Parameters.AddWithValue("@Username", txtUsuario.Text);
-                    
-                    SqlDataReader rd = sqlCmd1.ExecuteReader();
-                    
+                                      
                     Dashboard menu = new Dashboard();
                     menu.id = txtUsuario.Text;
                     while (rd.Read())

@@ -19,8 +19,6 @@
         <TextBox x:Name="direccionTxt" HorizontalAlignment="Left" Height="39" Margin="173,189,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
         <Label x:Name="phone" Content="Teléfono:" HorizontalAlignment="Left" Margin="2,248,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
         <TextBox x:Name="telefonoTxt" HorizontalAlignment="Left" Height="39" Margin="173,251,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="299" FontSize="24"/>
-        <Label x:Name="birth" Content="Nacimiento:" HorizontalAlignment="Left" Margin="2,310,0,0" VerticalAlignment="Top" FontSize="24" Width="154" HorizontalContentAlignment="Right"/>
-        <DatePicker x:Name="date" HorizontalAlignment="Left" Margin="173,310,0,0" VerticalAlignment="Top" Width="299" Height="42" FontSize="24"/>
         <Button x:Name="edit" Content="Editar" HorizontalAlignment="Left" Margin="173,398,0,0" VerticalAlignment="Top" Width="167" Click="Edit_Click"/>
         <Button x:Name="save" Content="Guardar" HorizontalAlignment="Left" Margin="173,398,0,0" VerticalAlignment="Top" Width="167" Click="Save_Click"/>
         <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="365" Margin="490,31,0,0" VerticalAlignment="Top" Width="5"/>

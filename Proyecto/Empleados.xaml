@@ -1,0 +1,35 @@
+﻿<Page x:Class="Proyecto.Empleados"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Proyecto"
+      mc:Ignorable="d" 
+      d:DesignHeight="530" d:DesignWidth="880"
+      Title="Empleados">
+
+    <Grid Background="White">
+        <TextBlock Margin="20 10" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Foreground="#FF2562B9" FontWeight="DemiBold">
+                Gestione la informacion de los empleados.
+        </TextBlock>
+
+        <DataGrid x:Name="TablaEmpleados" Margin="10 60 10 10" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Background="#FF2562B9" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Binding="{Binding Nombre}" Header="Nombre" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Apellido}" Header="Apellido" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Telefono}" Header="Telefono" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Direccion}" Header="Direccion" Width="125"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="125"/>
+                <DataGridTextColumn Binding="{Binding Login}" Header="Login" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Password}" Header="Password" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button x:Name="crearEmpleado" Content="Crear" Width="100" Margin="20 0" Foreground="White" Background="#FF2562B9" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" Click="Button_Click"/>
+            <Button x:Name="modificarEmpleado" Content="Modificar" Width="100" Margin="20 0" Foreground="White" Background="#FF2562B9" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" Click="ModificarEmpleado_Click"/>
+            <Button x:Name="eliminarEmpleado" Content="Eliminar" Width="100" Margin="20 0" Foreground="White" Background="#FF2562B9" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" Click="EliminarEmpleado_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
