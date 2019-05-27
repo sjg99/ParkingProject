@@ -22,6 +22,7 @@ using AForge.Video.DirectShow;
 using System.Drawing;
 using System.Threading;
 using System.Drawing.Imaging;
+using System.Text.RegularExpressions;
 
 namespace Proyecto
 {
@@ -111,6 +112,7 @@ namespace Proyecto
             task_result = task_result.Substring(12, 6);
             placa = task_result;
             label.Content = placa;
+            RegistrarIS();
         }
        
         private int CantidadIngresos()
@@ -173,9 +175,40 @@ namespace Proyecto
             }
             return csalida;
         }
-        private void ButtonR_Click_1(object sender, RoutedEventArgs e)
+        private DateTime ConsultarIngreso()
         {
-            if (placa != null)
+            DateTime fingreso = DateTime.MinValue;
+            try
+            {
+                if (sqlCon.State == ConnectionState.Closed)
+                    sqlCon.Open();
+                string query = "SELECT top 1 * FROM tbingreso Where Placa=@Placa order by Fecha DESC";
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Parameters.AddWithValue("@Placa", placa);
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        fingreso = reader.GetDateTime(reader.GetOrdinal("Fecha"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+            return fingreso;
+        }
+        private void RegistrarIS()
+        {
+            var Match = Regex.IsMatch(placa, @"([A-Z]{3})+([0-9]{3})");            
+            if (placa != null && Match)
             {
                 DateTime Fecha = DateTime.Now;
                 if (CantidadIngresos() == CantidadSalidas())
@@ -203,14 +236,45 @@ namespace Proyecto
                         sqlCon.Close();
                     }
                 }
-                else
+                else if (CantidadIngresos() - CantidadSalidas() == 1)
                 {
-                    MessageBox.Show("No puede ingresar un vehiculo que no ha salido");
+                    DateTime Fechas = DateTime.Now;
+                    DateTime Fechai = ConsultarIngreso();
+                    var diferencia = Fechas - Fechai;
+                    int minutos = (int)diferencia.TotalMinutes;
+                    int precio = minutos * 60;
+                    try
+                    {
+                        if (sqlCon.State == ConnectionState.Closed)
+                            sqlCon.Open();
+                        string query = "INSERT INTO tbsalida VALUES (@Placa,@Fecha,@Precio)";
+                        SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                        sqlCmd.CommandType = CommandType.Text;
+                        sqlCmd.Parameters.AddWithValue("@Placa", placa);
+                        sqlCmd.Parameters.AddWithValue("@Fecha", Fechas);
+                        sqlCmd.Parameters.AddWithValue("@Precio", precio.ToString());
+                        if (sqlCmd.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("El vehiculo con placa " + placa + " ha salido a las " + Fechas + " y debe pagar $" + precio);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        sqlCon.Close();
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show("Error para registrar ingreso o salida");
                 }
             }
             else
             {
-                MessageBox.Show("No ha ingresado una imagen");
+                MessageBox.Show("No se ha reconocido una placa valida");
             }
         }
 
