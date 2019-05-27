@@ -10,10 +10,15 @@
 
 
     <Grid Margin="0,0,0,0">
-        <Image x:Name="image" HorizontalAlignment="Left" Height="530" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="715"/>
-        <Button x:Name="button" Content="Take Pic" HorizontalAlignment="Left" Margin="766,311,0,0" VerticalAlignment="Top" Width="146" Click="button_Click" Height="47" />
-        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="766,223,0,0" VerticalAlignment="Top" Width="146" FontSize="24" HorizontalContentAlignment="Center"/>
-        
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="131" Margin="766,56,0,0" VerticalAlignment="Top" Width="146"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="464" Margin="10,0,0,76" VerticalAlignment="Bottom" Width="715"/>
+        <Button x:Name="button" Content="Take Pic" HorizontalAlignment="Left" Margin="752,445,0,0" VerticalAlignment="Top" Width="182" Click="button_Click" Height="47" />
+        <Label x:Name="PlacaES" Content="" HorizontalAlignment="Left" Margin="752,167,0,0" VerticalAlignment="Top" Width="182" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+        <Label x:Name="Placa" Content="" HorizontalAlignment="Left" Margin="752,209,0,0" VerticalAlignment="Top" Width="182" FontSize="24" HorizontalContentAlignment="Center"/>
+        <Label x:Name="HoraES" Content="" HorizontalAlignment="Left" Margin="752,256,0,0" VerticalAlignment="Top" Width="182" FontSize="24" HorizontalContentAlignment="Center" RenderTransformOrigin="0.477,2.295" FontWeight="Bold"/>
+        <Label x:Name="Hora" Content="" HorizontalAlignment="Left" Margin="752,298,0,0" VerticalAlignment="Top" Width="182" FontSize="16" HorizontalContentAlignment="Center" RenderTransformOrigin="0.477,2.295"/>
+        <Label x:Name="PagoES" Content="" HorizontalAlignment="Left" Margin="752,329,0,0" VerticalAlignment="Top" Width="182" FontSize="24" HorizontalContentAlignment="Center" RenderTransformOrigin="0.477,2.295" FontWeight="Bold"/>
+        <Label x:Name="Pago" Content="" HorizontalAlignment="Left" Margin="752,371,0,0" VerticalAlignment="Top" Width="182" FontSize="24" HorizontalContentAlignment="Center" RenderTransformOrigin="0.477,2.295"/>
+
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="89" Margin="752,56,0,0" VerticalAlignment="Top" Width="182"/>
     </Grid>
 </Page>

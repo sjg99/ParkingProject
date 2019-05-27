@@ -53,10 +53,9 @@ namespace Proyecto
                 existenDispositivos = true;
             }
         }
+
         private void MostrarImagen(object sender, NewFrameEventArgs eventArgs)
         {
-           
-
             System.Drawing.Image img = (Bitmap)eventArgs.Frame.Clone();
 
             MemoryStream ms = new MemoryStream();
@@ -68,13 +67,15 @@ namespace Proyecto
             bi.EndInit();
 
             bi.Freeze();
-            
+
             Dispatcher.BeginInvoke(new ThreadStart(delegate
             {
                 image.Source = bi;
             }));
         }
         string placa = null;
+
+        string path = Directory.GetCurrentDirectory();
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task<string> ProcessImage(string image_path)
@@ -98,7 +99,7 @@ namespace Proyecto
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            string filepath = @"C:\Users\SJG99\Pictures\Placa.png";
+            string filepath = path.Replace(@"\bin\Debug", @"\Matriculas\Placa.png");
             image1.Source = image.Source;
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create((BitmapSource)image1.Source));
@@ -111,8 +112,8 @@ namespace Proyecto
             task_result = task_result.Substring(task_result.IndexOf('['));
             task_result = task_result.Substring(12, 6);
             placa = task_result;
-            label.Content = placa;
             RegistrarIS();
+            
         }
        
         private int CantidadIngresos()
@@ -224,7 +225,14 @@ namespace Proyecto
                         sqlCmd.Parameters.AddWithValue("@Fecha", Fecha);
                         if (sqlCmd.ExecuteNonQuery() == 1)
                         {
-                            MessageBox.Show("El vehiculo con placa " + placa + " ha ingresado a las " + Fecha);
+                            //MessageBox.Show("El vehiculo con placa " + placa + " ha ingresado a las " + Fecha);
+                            PlacaES.Content = "Matricula:";
+                            Placa.Content = placa;
+                            HoraES.Content = "Fecha Ingreso:";
+                            Hora.Content = Fecha;
+
+                            PagoES.Visibility = Visibility.Visible;
+                            Pago.Visibility = Visibility.Visible;
                         }
                     }
                     catch (Exception ex)
@@ -255,7 +263,16 @@ namespace Proyecto
                         sqlCmd.Parameters.AddWithValue("@Precio", precio.ToString());
                         if (sqlCmd.ExecuteNonQuery() == 1)
                         {
-                            MessageBox.Show("El vehiculo con placa " + placa + " ha salido a las " + Fechas + " y debe pagar $" + precio);
+                            //MessageBox.Show("El vehiculo con placa " + placa + " ha salido a las " + Fechas + " y debe pagar $" + precio);
+                            PlacaES.Content = "Matricula:";
+                            Placa.Content = placa;
+                            HoraES.Content = "Fecha Salida:";
+                            Hora.Content = Fecha;
+                            PagoES.Content = "Valor:";
+                            Pago.Content = "$" + precio;
+
+                            PagoES.Visibility = Visibility.Visible;
+                            Pago.Visibility = Visibility.Visible;
                         }
                     }
                     catch (Exception ex)
