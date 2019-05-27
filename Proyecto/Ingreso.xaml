@@ -12,8 +12,8 @@
     <Grid Margin="0,0,0,0">
         <Image x:Name="image" HorizontalAlignment="Left" Height="530" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="715"/>
         <Button x:Name="button" Content="Take Pic" HorizontalAlignment="Left" Margin="766,311,0,0" VerticalAlignment="Top" Width="146" Click="button_Click" Height="47" />
-        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="766,108,0,0" VerticalAlignment="Top" Width="146" FontSize="24" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="766,223,0,0" VerticalAlignment="Top" Width="146" FontSize="24" HorizontalContentAlignment="Center"/>
         <Button x:Name="buttonR" Content="Registrar Ingreso" HorizontalAlignment="Left" Margin="766,383,0,0" VerticalAlignment="Top" Width="146" Height="47" Click="ButtonR_Click_1"/>
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="100" Margin="766,68,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="131" Margin="766,56,0,0" VerticalAlignment="Top" Width="146"/>
     </Grid>
 </Page>

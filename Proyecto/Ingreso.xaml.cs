@@ -97,27 +97,13 @@ namespace Proyecto
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            /*OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Jpeg files (*.jpeg)|*.jpeg|Jpg files (*.jpg)|*.jpg|Png files (*.png)|*.png|All files (*.*)|*.*";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                String path = openFileDialog.FileName;
-
-                image.Source = new BitmapImage(new Uri(path));
-                Task<string> recognizeTask = Task.Run(() => ProcessImage(path));
-                recognizeTask.Wait();
-                string task_result = recognizeTask.Result;
-
-                task_result = task_result.Substring(task_result.IndexOf('['));
-                task_result = task_result.Substring(12, 6);
-                placa = task_result;
-                label.Content = placa;
-            }*/
+            string filepath = @"C:\Users\SJG99\Pictures\Placa.png";
             image1.Source = image.Source;
-
-            string x = image1.Source.ToString();
-            Task<string> recognizeTask = Task.Run(() => ProcessImage(x));
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create((BitmapSource)image1.Source));
+            using (FileStream stream = new FileStream(filepath, FileMode.Create))
+                encoder.Save(stream);            
+            Task<string> recognizeTask = Task.Run(() => ProcessImage(filepath));
             recognizeTask.Wait();
             string task_result = recognizeTask.Result;
 
